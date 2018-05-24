@@ -32,7 +32,7 @@ class TwigRenderer implements RendererInterface {
         $templatePath = dirname(__FILE__).'/../../templates';
         $loader = new Twig_Loader_Filesystem($templatePath);
         $twig = new Twig_Environment($loader, array());
-        $twig->addFilter('var_dump', new Twig_Filter('var_dump', 'var_dump'));
+        $twig->addFilter(new Twig_Filter('var_dump', 'var_dump'));
         $print = $twig->render('index.html.twig',
             array(
                 'projectname'           => $obj->getProjectName(),
