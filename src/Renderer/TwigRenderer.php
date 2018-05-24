@@ -7,7 +7,7 @@ namespace elkan\BehatFormatter\Renderer;
 
 use Twig_Environment;
 use Twig_Loader_Filesystem;
-use Twig_Filter_Function;
+use Twig_Filter;
 
 class TwigRenderer implements RendererInterface {
 
@@ -32,7 +32,7 @@ class TwigRenderer implements RendererInterface {
         $templatePath = dirname(__FILE__).'/../../templates';
         $loader = new Twig_Loader_Filesystem($templatePath);
         $twig = new Twig_Environment($loader, array());
-        $twig->addFilter('var_dump', new Twig_Filter_Function('var_dump'));
+        $twig->addFilter('var_dump', new Twig_Filter('var_dump', 'var_dump'));
         $print = $twig->render('index.html.twig',
             array(
                 'projectname'           => $obj->getProjectName(),
